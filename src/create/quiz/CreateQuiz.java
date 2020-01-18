@@ -27,6 +27,10 @@ public class CreateQuiz {
         System.out.println("Enter the no of question you want to ask");
         noAsked = sc.nextInt();
     }
+
+    public void insertQuestions() {
+
+    }
 }
 
 

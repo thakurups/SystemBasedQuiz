@@ -13,14 +13,19 @@ public class QuestionDetailsFetch {
     int total;
     ArrayList<Integer> quesList = new ArrayList<>();
     private int required;
+    String quizzName;
 
     public void setRequired(int required) {
         this.required = required;
     }
 
+    public void setQuizzName(String quizzName) {
+        this.quizzName = quizzName;
+    }
+
     public void setTotal(Connection con) throws SQLException {
         TotalQuestionsCounter obj = new TotalQuestionsCounter();
-        this.total = obj.rowsCount(con);
+        this.total = obj.rowsCount(con, quizzName);
     }
 
     public void setQuesList() {
@@ -33,7 +38,7 @@ public class QuestionDetailsFetch {
         Scanner sc = new Scanner(System.in);
         int i = 1;
         for (Integer a : quesList) {
-            String s = "Select * from question_details where qid=?";
+            String s = "Select * from " + quizzName + " where qid=?";
             PreparedStatement p = con.prepareStatement(s);
             p.setInt(1, a);
             ResultSet r = p.executeQuery();

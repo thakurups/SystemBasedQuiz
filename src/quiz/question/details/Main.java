@@ -9,6 +9,7 @@ public class Main {
         Connection con = obj.attemptConnection();
         QuestionDetailsFetch obj1 = new QuestionDetailsFetch();
         obj1.setRequired(10);
+        obj1.setQuizzName("question_details");
         obj1.setTotal(con);
         obj1.setQuesList();
         obj1.displayQuestionOptions(con);
