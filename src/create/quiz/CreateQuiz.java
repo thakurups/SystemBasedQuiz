@@ -10,6 +10,10 @@ public class CreateQuiz {
     String quizName;
     int noAsked;
 
+    public int getNoAsked() {
+        return noAsked;
+    }
+
     public void createTable(Connection c1) throws SQLException {
         Connection connect = c1;
         String query = "create table " + quizName + "(qid int,Question longtext,A mediumtext,B mediumtext,C mediumtext,D mediumtext,Ans mediumtext);";
@@ -24,7 +28,7 @@ public class CreateQuiz {
         quizName = sc.nextLine();
         System.out.println("Enter the no of question you want to insert");
         noOfQuestions = sc.nextInt();
-        System.out.println("Enter the no of question you want to ask");
+        System.out.println("Enter the no of question you want to ask it should be less than or equal to number of questions inserted");
         noAsked = sc.nextInt();
     }
 
