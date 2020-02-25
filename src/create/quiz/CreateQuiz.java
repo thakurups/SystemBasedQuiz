@@ -33,12 +33,18 @@ public class CreateQuiz {
     }
 
     public void insertQuestions(Connection c) throws SQLException {
+
+        String s1 = "insert into quizzcollection values(?,?)";
+        PreparedStatement p = c.prepareStatement(s1);
+        p.setString(1, quizName);
+        p.setInt(2, noAsked);
+        p.executeUpdate();
         int a = noOfQuestions;
         int b = 1;
         Scanner sc = new Scanner(System.in);
         while (a > 0) {
             String s = "insert into " + quizName + " values(?,?,?,?,?,?,?)";
-            PreparedStatement p = c.prepareStatement(s);
+            p = c.prepareStatement(s);
             p.setInt(1, b);
             System.out.println("Enter question");
             p.setString(2, sc.nextLine());
