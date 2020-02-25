@@ -12,5 +12,6 @@ public class CreateMain {
         obj.fetchValues();
         ob.attemptConnection();
         obj.createTable(ob.co);
+        obj.insertQuestions(ob.co);
     }
 }

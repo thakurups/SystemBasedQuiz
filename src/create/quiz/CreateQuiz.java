@@ -28,8 +28,30 @@ public class CreateQuiz {
         noAsked = sc.nextInt();
     }
 
-    public void insertQuestions() {
-
+    public void insertQuestions(Connection c) throws SQLException {
+        int a = noOfQuestions;
+        int b = 1;
+        Scanner sc = new Scanner(System.in);
+        while (a > 0) {
+            String s = "insert into " + quizName + " values(?,?,?,?,?,?,?)";
+            PreparedStatement p = c.prepareStatement(s);
+            p.setInt(1, b);
+            System.out.println("Enter question");
+            p.setString(2, sc.nextLine());
+            System.out.println("Provide option A");
+            p.setString(3, sc.nextLine());
+            System.out.println("Provide option B");
+            p.setString(4, sc.nextLine());
+            System.out.println("Provide option C");
+            p.setString(5, sc.nextLine());
+            System.out.println("Provide option D");
+            p.setString(6, sc.nextLine());
+            System.out.println("Provide Correct answer");
+            p.setString(7, sc.nextLine());
+            p.executeUpdate();
+            b++;
+            a--;
+        }
     }
 }
 
